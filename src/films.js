@@ -64,11 +64,15 @@ function hoursToMinutes(movies) {
   );
   let min = duration.map((b) => parseInt(b.duration.substring(2, 6)) || 0);
   let moviesInMin = hour.map((item, i) => item + min[i]);
-  duration.forEach((before, after) => {
+  duration.map((before, after) => {
     before.duration = moviesInMin[after];
   });
-  let final = [...duration]
+  final = duration.slice(0);
+ //final = duration.map(a=>{return{...a}})
+  //let final = duration.map(a=>Object.assign({},a))
+ //final = [...duration];
   console.log(duration);
+  console.log(final);
   //hay que hacer que result imprima lo q imprime duration
 
   return final;
