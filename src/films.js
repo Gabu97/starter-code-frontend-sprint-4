@@ -57,17 +57,24 @@ function moviesAverageByCategory(array, genre) {
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(movies) {
   //let duration = [...movies];
-  let duration = movies.slice();
+  let duration =[...movies];
 
   let hour = duration.map(
     (a) => parseInt(a.duration.substring(0, 2)) * 60 || 0
   );
   let min = duration.map((b) => parseInt(b.duration.substring(2, 6)) || 0);
   let moviesInMin = hour.map((item, i) => item + min[i]);
-  duration.map((before, after) => {
+  
+
+  let final = [movies];
+  final.forEach((before, after) => {
     before.duration = moviesInMin[after];
   });
-  final = duration.slice(0);
+  //final.push(...duration);
+  //TODAS LAS FORMAS E INTENTOS
+  //let final = structuredClone(duration);
+ // final = duration.slice(0);
+  //final = Array.from(duration);
  //final = duration.map(a=>{return{...a}})
   //let final = duration.map(a=>Object.assign({},a))
  //final = [...duration];
