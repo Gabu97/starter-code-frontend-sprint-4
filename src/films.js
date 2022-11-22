@@ -55,24 +55,40 @@ function moviesAverageByCategory(array, genre) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes(movies, duration) {
-  duration = movies.map((x) => x);
+function hoursToMinutes(movies) {
+  //let duration = [...movies];
+  let duration = movies.slice();
+
   let hour = duration.map(
     (a) => parseInt(a.duration.substring(0, 2)) * 60 || 0
   );
   let min = duration.map((b) => parseInt(b.duration.substring(2, 6)) || 0);
   let moviesInMin = hour.map((item, i) => item + min[i]);
-  let result = duration.forEach((before, after) => {
+  duration.forEach((before, after) => {
     before.duration = moviesInMin[after];
   });
+  let final = [...duration]
   console.log(duration);
-  console.log(result);
-  return duration;
-  //ver como imprimir el array de peliculas substituyendo
+  //hay que hacer que result imprima lo q imprime duration
+
+  return final;
 }
+//ver como imprimir el array de peliculas substituyendo
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(array, year) {
+  let movieYear = array.filter((array) => array.year == year).sort();
+  movieYear.sort(function (item, i) {
+    return i.score - item.score;
+  });
+  let result = [...movieYear];
+  return result.slice(0, 1);
+
+  // let bestFilm = yearFilm.slice(0, 1);
+  // return bestFilm;
+  //  director = array.filter((movie) => movie.director == director);
+  //let result = director.reduce((a, b) => a + b.score, 0) / director.length;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
